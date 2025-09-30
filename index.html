@@ -13,29 +13,29 @@
         }
         /* Style for the horizontal lines between lanes */
         .lane-divider {
-            border-bottom: 4px solid white;
+            border-bottom: 2px solid white;
         }
     </style>
 </head>
-<body class="bg-gray-900 flex items-center justify-center h-screen">
+<body class="bg-black">
 
     <!-- Main container for the digital sign -->
-    <div id="signage-display" class="bg-blue-800 text-white w-full max-w-4xl p-8 rounded-lg shadow-2xl flex items-center justify-between">
+    <div id="signage-display" class="bg-blue-800 text-white flex items-center justify-between" style="width: 240px; height: 120px; padding: 8px;">
 
         <!-- Left section for text content -->
-        <div class="flex flex-col justify-between h-full space-y-4">
+        <div class="flex flex-col justify-between h-full">
             <div>
-                <p class="text-4xl md:text-5xl font-light">Tervetuloa</p>
-                <p id="license-plate" class="text-7xl md:text-9xl font-bold my-4">ABC-123</p>
+                <p class="text-xl font-light">Tervetuloa</p>
+                <p id="license-plate" class="text-4xl font-bold my-1">ABC-123</p>
             </div>
             <div>
-                <p class="text-3xl md:text-4xl font-light">Valitse lyhin</p>
-                <p id="lane-info" class="text-3xl md:text-4xl font-light">jono 2-5</p>
+                <p class="text-lg font-light">Valitse lyhin</p>
+                <p id="lane-info" class="text-lg font-light">jono 2-5</p>
             </div>
         </div>
 
         <!-- Right section for lane indicators -->
-        <div id="lanes-container" class="flex flex-col text-6xl md:text-7xl font-bold space-y-2">
+        <div id="lanes-container" class="flex flex-col text-2xl font-bold">
             <!-- Lane indicators will be dynamically inserted here by JavaScript -->
         </div>
 
@@ -76,16 +76,15 @@
                 const isLaneOpen = availableLanes.includes(i);
 
                 const laneElement = document.createElement('div');
-                laneElement.className = 'flex items-center justify-end space-x-6';
+                laneElement.className = 'flex items-center justify-end space-x-2';
 
                 // Add divider line, but not for the last item
                 if (i > 1) {
-                    laneElement.classList.add('lane-divider', 'pb-2');
+                    laneElement.classList.add('lane-divider', 'pb-1');
                 }
-                 if (i < 5) {
-                    laneElement.classList.add('pt-2');
+                if (i < 5) {
+                    laneElement.classList.add('pt-1');
                 }
-
 
                 const laneNumber = document.createElement('span');
                 laneNumber.textContent = i;
@@ -94,11 +93,11 @@
                 const laneIcon = document.createElement('span');
                 if (isLaneOpen) {
                     // Green Arrow
-                    laneIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>`;
+                    laneIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>`;
                     laneIcon.className = 'text-green-400';
                 } else {
                     // Red X
-                    laneIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" /></svg>`;
+                    laneIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12" /></svg>`;
                     laneIcon.className = 'text-red-500';
                 }
                 laneElement.appendChild(laneIcon);
@@ -108,3 +107,4 @@
     </script>
 </body>
 </html>
+
